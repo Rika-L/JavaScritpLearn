@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //请遵循在函数里首先申明所有变量
+
+        //全局作用域有windows属性
+
+        //名字空间：把代码全部放入唯一的名字空间
+        //const生命常量
+        const PI = 3.14;
+
+        //解构赋值
+        //即直接对多个变量同时赋值
+        let [x, y, z] = ['hello', 'javascript', 'es6'];
+
+        //如果从一个对象中取出若干属性，也可以使用解构赋值
+
+        //解构可以简化代码
+
+        //使用场景
+        function buildDate({year, month, day, hour = 0, min = 0, sec = 0}) {
+            return new Date(year + '-' + month + '-' + day + '-' + hour + ':' + min + ':' + sec);
+        }
+
+        console.log(buildDate({year:2022, month:1, day:1}))
+    </script>
+</head>
+<body>
+</body>
+</html>

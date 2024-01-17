@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 对象(类似于python中的字典)
+        let xiaoming = {
+            name: '小明',
+            birth: 1990,
+            school: 'No.1 Middle School',
+            height: 1.70,
+            weight: 65,
+            score: null
+        };
+        console.log(xiaoming.name)
+        // 如果属性名有特殊字符，则必须要用''括起来，访问这个属性也无法使用. 必须使用['xxx']来访问
+        let xiaohong = {
+            name: '小红',
+            'middle-school': 'No.1 Middle School'
+        };
+        console.log(xiaohong.name)
+        console.log(xiaohong["middle-school"])
+
+        // 可以自由的给一个对象添加或删除属性
+        xiaoming.age = 18;
+        console.log(xiaoming.age)
+        // delete xiaoming.age 删除age属性
+
+        // 检测对象是否有xx属性，用in
+        // '属性' in 对象; 返回true或false
+
+        // 判断一个属性是否是 对象 自身拥有的，用hasOwnProperty()方法
+        // 对象.hasOwnProperty('属性'); 如果是自身拥有的，则返回true，如果是继承得到的，返回false
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

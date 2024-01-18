@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let now = new Date();
+        now; //Thu Jan 18 2024 16:19:14 GMT+0800 (中国标准时间)
+        now.getFullYear(); //2024
+        now.getMonth(); //1 月份
+        now.getDate(); //18 号
+        now.getHours(); //16 24小时制
+        now.getMinutes(); //19 分钟
+        now.getSeconds(); //14 秒
+        now.getMilliseconds(); //875 毫秒数
+        now.getTime(); //以number形式表示时间戳
+
+        //创建一个指定日期和时间的Date
+        let d = new Date(2024, 0, 18, 16, 19, 14, 123);
+        //特别注意月份从0开始计，贼坑
+
+        //另一种方式“解析一个符合标准（ISO 8601）的字符串
+        let d1 = Date.parse('2015-06-24T19:49:22.875+08:00');
+        d1; // 1435146562875
+
+        //转换方便
+        let d2 = new Date(d1);
+        alert(d2);
+
+        d2.toUTCString();//转换为UTC时间
+
+        //获取时间戳
+        alert(Date.now());
+        //或者
+        alert(now.getTime());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

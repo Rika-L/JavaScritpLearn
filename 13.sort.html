@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //sort排序算法
+        //也约等于python
+        let arr = [10, 20, 1, 2];
+        let r = arr.sort(function (x, y) {
+            if (x < y) return 1;
+            if (x > y) return -1;
+            return 0;
+        });
+        console.log(r);
+        console.log(arr);
+        //温馨提示：sort方法直接修改Array
+        //所以 r === arr
+    </script>
+</head>
+<body>
+
+</body>
+</html>

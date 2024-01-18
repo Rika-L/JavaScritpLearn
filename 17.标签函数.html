@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //不看，没啥用，知道就行
+        const email = "test@example.com";
+        const password = 'hello123';
+
+        function sql(strings, ...exps) {
+            console.log(`SQL: ${strings.join('?')}`);
+            console.log(`SQL parameters: ${JSON.stringify(exps)}`);
+            return {
+                name: '小明',
+                age: 20
+            };
+        }
+
+        const result = sql`SELECT * FROM users WHERE email = ${email} AND password = ${password}`;
+
+        console.log(JSON.stringify(result));
+
+        //会自动转换为对sql函数的调用
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

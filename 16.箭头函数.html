@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //ES6新增的
+        // x => x * x
+        //上述箭头函数相当于
+        /*function(x) {
+            return x * x;
+        }*/
+        //相当于匿名函数
+        //跟python 的 lambda(x: x * x)一样
+
+        //如果参数有两个，就需要用括号括起来
+        // (x, y) => x * x + y * y
+
+        //如果要传入函数体
+        //x => ({ foo: x })
+
+        //this 箭头函数内部的this由上下文决定
+
+        //练习：用箭头函数简化牌序时传入的函数
+        let arr = [10, 20, 1, 2];
+        arr.sort((x, y) => {
+            if (x < y) return -1;
+            if (x > y) return 1;
+            return 0;
+        });
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

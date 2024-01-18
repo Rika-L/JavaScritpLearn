@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 在一个对象中绑定函数，称之为方法
+        let xiaoming = {
+            name: '小明',
+            birth: 1990,
+            age: function () {
+                let y = new Date().getFullYear();
+                return y- this.birth;
+            }
+        };
+        // this始终指向当前对象，约等于python中的self
+        // 只在age方法中指向对象
+        alert(xiaoming.age());
+
+        //也可以重构方法，用that变量获取this
+        let xiaohong = {
+            name:'小红',
+            birth:2023,
+            age: function () {
+                let that = this;
+                function getAgeFromBirth() {
+                    let y = new Date().getFullYear();
+                    return y- that.birth;
+                }
+                return getAgeFromBirth();
+            }
+        }
+        alert(xiaohong.age());
+
+        function getAge(){
+            let y = new Date().getFullYear();
+            return y - this.birth;
+        }
+
+        let xiao = {
+            name:'小',
+            birth:2020,
+            age:getAge
+        };
+        alert(xiao.age()); //25
+        //用apply修复getAge()调用
+        getAge.apply(xiao, []); //参数指向xiao参数为空
+
+        //装饰器
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

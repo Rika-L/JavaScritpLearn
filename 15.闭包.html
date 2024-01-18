@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //闭包(别折磨我了)python同款
+        function lazy_sum(arr) {
+            let sum = function () {
+                return arr.reduce(function (x, y) {
+                    return x + y;
+                });
+            }
+            return sum;
+        }
+
+        let f = lazy_sum([1, 2, 3, 4]);
+        console.log(f());
+
+        //创建一个匿名函数并立刻执行
+        (function (x) {
+            return x * x;
+        })(x);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

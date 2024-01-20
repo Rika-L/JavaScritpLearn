@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- HTML结构 -->
+<p id="js">JavaScript</p>
+<div id="list">
+    <p id="java">Java</p>
+    <p id="python">Python</p>
+    <p id="scheme">Scheme</p>
+</div>
+
+<ol id="test-list">
+    <li class="lang">Scheme</li>
+    <li class="lang">JavaScript</li>
+    <li class="lang">Python</li>
+    <li class="lang">Ruby</li>
+    <li class="lang">Haskell</li>
+</ol>
+
+<script>
+    //如果是空节点，使用innerHTML
+    //如果不是，有两种方法
+    //1.appendChild把一个子节点添加到父节点的最后一个子节点
+    let
+        js = document.getElementById('js'),
+        list = document.getElementById('list');
+    list.appendChild(js);
+    //删掉原来的节点然后创建一个新节点
+
+    //更多的时候会从0创建一个新节点，然后插入指定的位置
+    let haskell = document.createElement('p');
+    haskell.id = 'haskell';
+    haskell.innerText = 'Haskell';
+    list.appendChild(haskell);
+    //这样就动态创建了一个新的节点
+
+    var d = document.createElement('style');
+    d.setAttribute('type', 'text/css');
+    d.innerHTML = 'p { color: red }';
+    document.getElementsByTagName('head')[0].appendChild(d);
+
+    let haskell1 = document.createElement('p');
+    haskell1.id = 'haskell';
+    haskell1.innerText = 'Haskell';
+
+    //insertBefore 把子节点插入到指定位置
+    //parentElement.insertBefore(newElement, referenceElement) 子节点会插入到referenceElement之前
+    let ref = document.getElementById('python');
+    list.insertBefore(haskell1, ref);
+
+    //按字符串顺序重新排序DOM节点：
+    let a = document.getElementById('test-list');
+    let arr = [];
+    for (let i = 0; i < a.children.length; i++) {
+        arr.push(a.children[i].innerText);
+    }
+    console.log(arr);
+    arr.sort(function (x, y) {
+        if (x < y) return -1;
+        if (x > y) return 1;
+        return 0;
+    });
+    for (let i = 0; i < a.children.length; i++) {
+        a.children[i].innerHTML = arr[i]
+
+    }
+
+
+    // 测试:
+    ;(function () {
+        var
+            arr, i,
+            t = document.getElementById('test-list');
+        if (t && t.children && t.children.length === 5) {
+            arr = [];
+            for (i = 0; i < t.children.length; i++) {
+                arr.push(t.children[i].innerText);
+            }
+            if (arr.toString() === ['Haskell', 'JavaScript', 'Python', 'Ruby', 'Scheme'].toString()) {
+                console.log('测试通过!');
+            } else {
+                console.log('测试失败: ' + arr.toString());
+            }
+        } else {
+            console.log('测试失败!');
+        }
+    })();
+</script>
+</body>
+</html>

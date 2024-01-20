@@ -4,7 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
-        
+        //JSON是一种数据交换格式
+        //把小明这个对象序列化成JSON格式字符串
+
+        let xiaoming = {
+            name: '小明',
+            age: 18,
+            gender:true,
+            height:1.88,
+            grade:null,
+            'middle-school':'\"W3C\" Middle School',
+            skill:['JavaScript', 'Java', 'Python', 'Lisp']
+        };
+        let s = JSON.stringify(xiaoming);
+        console.log(s);
+
+        //要输出好看点,可以加上参数,按缩进输出:
+        let s1 = JSON.stringify(xiaoming, null, '   ');
+        console.log(s1);
+
+        //第二个参数用于控制如何筛洗对象的键值,可以传入Array
+
+        //反序列化,用JSON.parse()
     </script>
 </head>
 <body>

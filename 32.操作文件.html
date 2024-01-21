@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" onsubmit="return checkFile()">
+    <input type="file" id="test-file-upload">
+    <button type="submit">Submit</button>
+</form>
+<script>
+    //上传文件的唯一控件<input type="file">
+    //在后台可以对上传的文件扩展名做检查,防止用户上传无效的文件格式
+    function checkFile() {
+        let f = document.getElementById('test-file-upload');
+        let filename = f.value;
+        if (!filename || !(filename.endsWith('.jpg') || filename.endsWith('.png') || filename.endsWith('.gif'))) {
+            alert('只能上传图片形式');
+            return false;
+        }
+    }
+
+    //File API允许javascript读取文件内容
+    //仅了解
+
+    //回调
+    //异步调用
+    //reader.readAsDataURL(file);
+    //reader.onload = function(e){}
+    //当文件读取完成后,自动调用该函数
+</script>
+</body>
+</html>

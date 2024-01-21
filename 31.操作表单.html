@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>
+    <input type="radio" name="weekday" id="monday" value="1">Monday
+</label>
+<label>
+    <input type="radio" name="weekday" id="tuesday" value="2">Tuesday
+</label>
+<div>HTML5新增</div>
+
+<input type="date" value="2024-01-01">
+
+<input type="datetime-local">
+
+<input type="color">
+
+<form id="test-form">
+    <input type="text" name="test">
+    <button type="button" onclick="doSubmitForm()">Submit</button>
+</form>
+
+<form id="test1-form" onsubmit="return checkForm()">
+    <input type="text" name="test">
+    <button type="submit">Submit</button>
+</form>
+
+<form id="login-form" method="post" onsubmit="return checkLoginForm()">
+    <input type="text" id="name" name="username">
+    <input type="password" id="input-password">
+    <input type="hidden" id="md5-password" name="password">
+    <button type="submit">Submit</button>
+</form>
+
+<div>
+    <!-- HTML结构 -->
+    <form id="test-register" action="#" target="_blank" onsubmit="return checkRegisterForm()">
+        <p id="test-error" style="color:red"></p>
+        <p>
+            用户名: <input type="text" id="username" name="username">
+        </p>
+        <p>
+            口令: <input type="password" id="password" name="password">
+        </p>
+        <p>
+            重复口令: <input type="password" id="password-2">
+        </p>
+        <p>
+            <button type="submit">提交</button>
+            <button type="reset">重置</button>
+        </p>
+    </form>
+</div>
+<script>
+    //input框，Django的时候学过了
+
+    //获取值，可以直接调用value获取对应用户的输入值
+    //let input = document.getElementById('email');
+    //input.value;
+    //适用于text,password,hidden,select
+
+    //对于单选框和复选框不适用,应该用checked确认
+    let mon = document.getElementById('monday');
+    let tue = document.getElementById('tuesday');
+    mon.checked; //true或者false
+
+    //提交表单
+    //方式一,通过<form>表单提交,跟django差不多
+    function doSubmitForm() {
+        let form = document.getElementById('test-form');
+        form.submit();
+    }
+
+    //但是方式一扰乱了浏览器对form表单的提交,浏览器默认点submit时提交或者在最后一个输入框按回车键
+    //第二种方法是响应<form>本身的onsubmit事件
+    function checkForm() {
+        let form = document.getElementById('test1-form');
+        //可以在此处修改form的input
+        //继续下一步
+        return true;
+    }
+
+    //注意返回true告诉浏览器继续执行
+
+    //提交表单时把密码传输改成MD5传输的正确做法
+    //善于利用<input type="hidden">即隐藏的输入框
+    function checkLoginForm() {
+        let input_pwd = document.getElementById('input-password');
+        let md5_pwd = document.getElementById('md5-password');
+        md5_pwd.value = toMD5(input_pwd.value);
+        return true;
+    }
+
+    function checkRegisterForm() {
+        let username = document.getElementById('username');
+        let pwd = document.getElementById('password');
+        let pwd1 = document.getElementById('password-2');
+        let re_username = /\w{3,10}/; //3-10位英文字母或数字
+        let re_pwd = /\w{6,20}/; //6到20位
+        if (!(re_username.test(username.value))) {
+            console.log('用户名必须是3-10位英文字母或数字');
+            return false;
+        } else if (!re_pwd.test(pwd.value)) {
+            console.log('密码必须是6-20位字符');
+            return false;
+        } else if (pwd.value !== pwd1.value) {
+            console.log('两次口令不一致');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // 测试:
+
+</script>
+</body>
+</html>

@@ -20,6 +20,21 @@ app.all('/server', (request, response)=>{
     //设置响应
     response.send('HELLO AJAX POST');
 });
+
+app.all('/json-server', (request, response)=>{
+    //设置响应头 设置允许跨域
+    response.setHeader('Access-control-Allow-Origin','*');
+    //响应头
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    //响应一个数据
+    const data = {
+        name: 'Rika'
+    };
+    let str = JSON.stringify(data);
+    //设置响应
+    response.send(str);
+});
+
 //4.监听端口启动服务
 app.listen(8000, ()=>{
     console.log('服务已经启动，8000端口监听中...');

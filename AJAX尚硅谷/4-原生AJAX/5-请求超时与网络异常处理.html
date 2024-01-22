@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求超时与网络异常</title>
+    <style>
+        #result {
+            width: 200px;
+            height: 100px;
+            border: solid 1px red;
+        }
+    </style>
+</head>
+<body>
+<button>点击发送请求</button>
+<div id="result"></div>
+<script>
+    const btn = document.getElementsByTagName('button')[0];
+    const result = document.querySelector('#result');
+
+    btn.addEventListener('click', function () {
+        // console.log('test');
+        //1. 创建ajax对象
+        const xhr = new XMLHttpRequest();
+        //2. 初始化请求
+        //超时设置
+        xhr.timeout = 2000;
+        //超时回调
+        xhr.ontimeout = () => {
+            alert('网络异常，请稍后重试')
+        };
+
+        //网络异常回调
+        xhr.onerror = () => {
+            alert('你的网络似乎出现了一些问题')
+        };
+
+
+        //AJAX解决IE缓存问题：加一个可变化的参数，比如时间戳
+        xhr.open('GET', 'http://127.0.0.1:8000/delay');
+        //3. 发送请求
+        xhr.send();
+        //4. 处理数据
+        xhr.onreadystatechange = function () {
+            //两个判断
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    result.innerHTML = xhr.response;
+
+                }
+
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

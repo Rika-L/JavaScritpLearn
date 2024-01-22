@@ -47,6 +47,20 @@ app.all('/ie', (request, response) => {
     //设置响应
     response.send(str);
 });
+app.all('/delay', (request, response) => {
+    //设置响应头 设置允许跨域
+    response.setHeader('Access-control-Allow-Origin', '*');
+    //响应头
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    //设置延迟
+    setTimeout(()=>{
+        //设置响应
+        response.send('HELLO AJAX POST');
+    },3000);
+});
+
+
+
 //4.监听端口启动服务
 app.listen(8000, () => {
     console.log('服务已经启动，8000端口监听中...');
